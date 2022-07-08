@@ -1,30 +1,30 @@
 package com.bridgelabz;
 
-
 import org.junit.jupiter.api.Test;
+import java.text.ParseException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HotelReservationTest {
-
-import static org.junit.Assert.*;
-
-import org.junit.Assert;
-import org.junit.Test;
 
      class HotelReservationTest {
 
 
 
-        @Test
-        public void test() {
+         @Test
+         public void WhenHotelsAreAddedReturnSize() throws ParseException {
+             HotelDetails hotel1 = new HotelDetails("Lakewood", 110);
+             HotelDetails hotel2 = new HotelDetails("Bridgewood", 160);
+             HotelDetails hotel3 = new HotelDetails("Ridgewood", 220);
 
-            HotelReservation.HotelReservation hotels = new HotelReservation();
 
-            hotels.addNewHotel("Lakewood", 110);
-            hotels.addNewHotel("Bridgewood", 160);
-            hotels.addNewHotel("Ridgewood", 220);
+             HotelReservation hotelReservation = new HotelReservation();
+             hotelReservation.addHotel(hotel1);
+             hotelReservation.addHotel(hotel2);
+             hotelReservation.addHotel(hotel3);
 
-            Assertion.assertEquals(3, hotels.countNoOfHotels());
-        }
-
-    }
-}
+             HotelDetails cheapestHotel = hotelReservation.findCheapestHotel();
+             long totalDays = hotelReservation.getTotalNoOfDays("10Sep2020", "11Sep2020");
+             long totalCost = cheapestHotel.getWeekDayRateRegCus() * totalDays;
+             assertEquals(220, totalCost);
+             assertEquals("Lakewood", cheapestHotel.getHotelName());
+         }
+     }

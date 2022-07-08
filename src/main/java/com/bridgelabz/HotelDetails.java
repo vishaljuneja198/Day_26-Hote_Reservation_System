@@ -1,46 +1,41 @@
 package com.bridgelabz;
 
-public class HotelDetails {
+class HotelDetails {
 
-    public class HotelDetails {
-
-
-
-        private String name;
-        private int price;
+    private String hotelName;
+    private int weekEndRateRegCus;
+    private int weekDayRateRegCus;
 
 
-        public HotelDetails(String name, int price) {
-            super();
-            this.name = name;
-            this.price = price;
-        }
+    public HotelDetails(String hotelName, int weekDayRateRegCus) {
+        super();
+        this.hotelName = hotelName;
+        this.weekDayRateRegCus = weekDayRateRegCus;
+    }
 
 
-        public String getName() {
-            return name;
+    public String getHotelName() {
+        return hotelName;
+    }
 
-        }
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public int getWeekEndRateRegCus() {
+        return weekEndRateRegCus;
+    }
 
-        public int getPrice() {
-            return price;
-        }
+    public void setWeekEndRateRegCus(int weekEndRateRegCus) {
+        this.weekEndRateRegCus = weekEndRateRegCus;
+    }
 
-        public void setPrice(int price) {
-            this.price = price;
-        }
+    public int getWeekDayRateRegCus() {
+        return weekDayRateRegCus;
+    }
 
-        @Override
-        public String toString() {
-            return "\nHotelDetails [name=" + name + ", price=" + price + "]";
-        }
-
-
-
+    public void setWeekDayRateRegCus(int weekDayRateRegCus) {
+        this.weekDayRateRegCus = weekDayRateRegCus;
     }
 
 }
