@@ -7,10 +7,11 @@ class HotelDetails {
     private int weekDayRateRegCus;
 
 
-    public HotelDetails(String hotelName, int weekDayRateRegCus) {
+    public HotelDetails(String hotelName, int weekDayRateRegCus, int weekEndRateRegCus) {
         super();
         this.hotelName = hotelName;
         this.weekDayRateRegCus = weekDayRateRegCus;
+        this.weekEndRateRegCus = weekEndRateRegCus;
     }
 
 

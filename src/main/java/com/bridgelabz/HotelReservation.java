@@ -12,10 +12,15 @@ import java.util.stream.Collectors;
 public class HotelReservation {
     ArrayList<HotelDetails> listOfHotels = new ArrayList<HotelDetails>();
 
+
     public void addHotel(HotelDetails obj) {
         listOfHotels.add(obj);
     }
 
+
+    public int totalHotels() {
+        return listOfHotels.size();
+    }
 
     public long getTotalNoOfDays(String start, String end) throws ParseException {
         Date startDate = new SimpleDateFormat("ddMMMyyyy").parse(start);
@@ -26,8 +31,7 @@ public class HotelReservation {
 
 
     public HotelDetails findCheapestHotel() {
-        HotelDetails cheapestHotel = listOfHotels.stream().min(Comparator.comparingDouble(HotelDetails::getWeekDayRateRegCus))
-                .orElse(null);
+        HotelDetails cheapestHotel = listOfHotels.stream().min(Comparator.comparing(HotelDetails::getWeekDayRateRegCus)).orElse(null);
         return cheapestHotel;
     }
 
@@ -35,17 +39,19 @@ public class HotelReservation {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to Hotel Reservation System!");
-        HotelDetails hotel1 = new HotelDetails("Lakewood", 110);
-        HotelDetails hotel2 = new HotelDetails("Bridgewood", 160);
-        HotelDetails hotel3 = new HotelDetails("Ridgewood", 220);
+        HotelDetails hotel1 = new HotelDetails("Lakewood", 110, 90);
+        HotelDetails hotel2 = new HotelDetails("Bridgewood", 160, 60);
+        HotelDetails hotel3 = new HotelDetails("Ridgewood", 220, 150);
         HotelReservation hotelReservation = new HotelReservation();
         hotelReservation.addHotel(hotel1);
         hotelReservation.addHotel(hotel2);
         hotelReservation.addHotel(hotel3);
-        System.out.println("Enter the check in date in proper format(ddMMMyyyy) ex.7july2022");
+        System.out.println("Enter the check in date in proper format(ddMMMyyyy) ex:10Sep2020 ");
         String startDate = sc.nextLine();
-        System.out.println("Enter the check out date in proper format(ddMMMyyyy) ex.29july2020");
+        System.out.println("Enter the check out date in proper format(ddMMMyyyy) ex:11Sep2020 ");
         String endDate = sc.nextLine();
+
+
         HotelDetails cheapestHotel = hotelReservation.findCheapestHotel();
         long totalDays = hotelReservation.getTotalNoOfDays("10Sep2020", "11Sep2020");
         long totalCost = cheapestHotel.getWeekDayRateRegCus() * totalDays;
