@@ -2,8 +2,7 @@ package com.bridgelabz;
 
 public class HotelDetails {
 
-    public class HotelDetails {
-
+    
 
 
         private String name;
